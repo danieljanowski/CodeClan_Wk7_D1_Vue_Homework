@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/bundle.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>To Do:</h1>
+        <form v-on:submit.prevent="saveNewItem">
+            <input type="text" id="new-item" v-model="newToDo" required>
+            <input type="radio" id="high" name="priority" value="high" v-model="priority" required>
+            <label for="high">High</label>
+            <input type="radio" id="low" name="priority" value="low" v-model="priority">
+            <label for="low">Low</label>
+            <button type="submit" value="submit"> Save </button>
+        </form>
+        <ul>
+            <li v-for="doitem in todo" :class="doitem.priority=='high' ? 'highpriority':'lowpriority'">
+                <span>{{doitem.task}}</span>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
